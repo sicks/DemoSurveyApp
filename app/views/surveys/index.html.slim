@@ -1,0 +1,10 @@
+h1 Surveys
+
+.stimulus-test data-controller="hello"
+  | Stimulus isn't working!
+
+.current-user
+  = Current.user.email_address
+
+.logout
+  = link_to "Log out", session_path, data: { turbo_method: :delete }
