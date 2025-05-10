@@ -23,3 +23,7 @@ html
 
   body
     = yield
+
+    #flash
+      = tag.div(flash[:alert], style: "color:red") if flash[:alert]
+      = tag.div(flash[:notice], style: "color:green") if flash[:notice]
