@@ -33,3 +33,5 @@
 ## Running tests
 
 Run `bundle exec rspec -fd` to see the formatted output of the full test suite.
+
+After running the test suite, coverage can be viewed at `http://localhost:3000/coverage/`
