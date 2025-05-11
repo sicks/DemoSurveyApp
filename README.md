@@ -8,7 +8,7 @@
 
 2. `echo $BROWSER` should return the path to the executable for a chromium based browser.
 
-    Add `export BROWSER=/usr/bin/google-chrome-stable` to your `~/.bashrc` (replacing `google-chrome-stable` with whichever chromium-based browser you use)
+    If it doesn't, add `export BROWSER=/usr/bin/google-chrome-stable` to your `~/.bashrc` (replace `google-chrome-stable` with the chromium based browser of your choice)
 
 ## Local Setup
 
@@ -29,3 +29,7 @@
 	`bundle exec rails s`
 
 5. Visit `http://localhost:3000`
+
+## Running tests
+
+Run `bundle exec rspec -fd` to see the formatted output of the full test suite.
