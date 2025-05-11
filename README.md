@@ -1,24 +1,31 @@
-# README
+# Demo Survey App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Prerequisites
 
-Things you may want to cover:
+1. `ruby -v` should return Ruby 3.3.0
 
-* Ruby version
+    [Installing Ruby](https://www.ruby-lang.org/en/documentation/installation/) - I like [ruby-install](https://github.com/postmodern/ruby-install)/[chruby](https://github.com/postmodern/chruby)
 
-* System dependencies
+2. `echo $BROWSER` should return the path to the executable for a chromium based browser.
 
-* Configuration
+    Add `export BROWSER=/usr/bin/google-chrome-stable` to your `~/.bashrc` (replacing `google-chrome-stable` with whichever chromium-based browser you use)
 
-* Database creation
+## Local Setup
 
-* Database initialization
+1. Check out this repo and navigate into the folder
 
-* How to run the test suite
+	`git clone git@github.com:sicks/DemoSurveyApp.git && cd DemoSurveyApp`
 
-* Services (job queues, cache servers, search engines, etc.)
+2. Install gems
 
-* Deployment instructions
+	`bundle install`
 
-* ...
+3. Setup the database:
+
+	`rails db:setup`
+
+4. Start the server
+
+	`bundle exec rails s`
+
+5. Visit `http://localhost:3000`
