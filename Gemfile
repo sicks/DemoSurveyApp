@@ -53,7 +53,7 @@ group :development, :test do
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
 
-  gem 'rspec-rails', '~> 8.0.0'
+  gem "rspec-rails", "~> 8.0.0"
 end
 
 group :development do
@@ -64,8 +64,8 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver"
+  gem "cuprite"
 
   # code coverage
-  gem 'simplecov', require: false
+  gem "simplecov", require: false
 end
