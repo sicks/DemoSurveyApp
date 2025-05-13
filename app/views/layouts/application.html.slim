@@ -22,7 +22,7 @@ html
     = javascript_importmap_tags
 
   body
-    main
+    = tag.main class: { authenticated: authenticated? } do
       = yield
 
     - if authenticated?

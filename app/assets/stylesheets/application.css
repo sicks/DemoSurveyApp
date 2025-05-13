@@ -17,7 +17,7 @@
   --pale-yellow: #F4FAD2;
   --wasabi: #D4EE5E;
   --loud-red: #FF4242;
-  --near-black; #222222;
+  --near-black: #222222;
 }
 
 html * {
@@ -39,6 +39,14 @@ body {
 main {
   padding: 1rem;
   flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.authenticated {
+    max-height: calc(100vh - 3.25rem);
+    overflow-y: auto;
+  }
 }
 
 footer {

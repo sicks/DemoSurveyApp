@@ -1,0 +1,44 @@
+form {
+  display: block;
+
+  .field {
+    margin-bottom: 0.75rem;
+  }
+
+  label {
+    display: block;
+    margin-bottom: 0.25rem;
+    text-align: left;
+    line-height: 1;
+  }
+
+  input {
+    &:focus {
+      outline: none;
+    }
+
+    &[type=email], &[type=password] {
+      width: 100%;
+      padding: 0.5rem 0.5rem;
+      border: 1px solid var(--near-black);
+      border-radius: 0.25rem;
+    }
+
+    &[type=submit] {
+      appearance: none;
+      display: inline-block;
+      background: var(--wasabi);
+      padding: 0.5rem 1rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      border: 1px solid var(--near-black);
+      border-radius: 0.25rem;
+
+      &.wide {
+        width: 100%
+      }
+    }
+  }
+}

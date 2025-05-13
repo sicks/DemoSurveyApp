@@ -1,19 +1,18 @@
-h1 Sign In
+.sessions
+  h1 title="Let me begin" Sign Up/In
 
-= form_with url: session_path do |f|
-  .field
-    = f.label :email_address
-    = f.email_field :email_address, required: true, autofocus: true, autocomplete: :off,
-      placeholder: "Enter your email address", value: params[:email_address]
-  .field
-    = f.label :password
-    = f.password_field :password, required: true, autocomplete: :off,
-      placeholder: "Enter your password", maxlength: 72
-  .field
-    = f.label :password_confirmation
-    = f.password_field :password_confirmation, autocomplete: :off,
-      placeholder: "Confirm password to create an account", maxlength: 72
-  .action
-    = f.submit "Sign in"
-
-= link_to "Forgot password?", new_password_path
+  = form_with url: session_path do |f|
+    .field
+      = f.label :email_address
+      = f.email_field :email_address, required: true, autofocus: true, autocomplete: :off,
+        placeholder: "Enter your email address", value: params[:email_address]
+    .field
+      = f.label :password
+      = f.password_field :password, required: true, autocomplete: :off,
+        placeholder: "Enter your password", maxlength: 72
+    .field
+      = f.label :password_confirmation
+      = f.password_field :password_confirmation, autocomplete: :off,
+        placeholder: "Confirm password to create an account", maxlength: 72
+    .action
+      = f.submit "Sign in", class: "wide"
