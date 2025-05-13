@@ -1,0 +1,37 @@
+#flash {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 99999;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+
+  .message {
+    padding: 1rem;
+    background: var(--light-grey);
+    color: var(--near-black);
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+    transition: opacity 0.3s ease, height 0.3s ease, padding-top 0.3s ease, padding-bottom 0.3s ease, margin-bottom 0.3s ease;
+    overflow: hidden;
+    border-style: solid;
+    border-width: 0 0 0 3px;
+
+    &.notice, &.success {
+      border-color: var(--wasabi);
+    }
+
+    &.alert, &.error {
+      border-color: var(--loud-red);
+    }
+
+    &.dismissing {
+      opacity: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin-bottom: -0.5rem;
+    }
+  }
+}

@@ -8,3 +8,55 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+  --light-grey: #F0F2EB;
+  --pale-green: #E1EDB9;
+  --pale-yellow: #F4FAD2;
+  --wasabi: #D4EE5E;
+  --loud-red: #FF4242;
+  --near-black; #222222;
+}
+
+html * {
+  color-profile: sRGB;
+  rendering-intent: auto;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'PT Sans', sans-serif;
+  color: var(--near-black);
+  background: var(--light-grey);
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+footer {
+  padding: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+a {
+  font-weight: bold;
+  transition: color 0.3s ease;
+
+  &:link, &:visited {
+    text-decoration: none;
+    color: var(--near-black);
+  }
+
+  &:hover, &:active {
+    color: var(--loud-red);
+  }
+}

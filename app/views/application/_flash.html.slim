@@ -1,0 +1,3 @@
+- flash.each do |type, message|
+  = tag.div class: [type, :message], data: { controller: :flash, type: } do
+    = message
