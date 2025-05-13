@@ -32,8 +32,6 @@ body {
   font-family: 'PT Sans', sans-serif;
   color: var(--near-black);
   background: var(--light-grey);
-  display: flex;
-  flex-direction: column;
 }
 
 main {
@@ -42,10 +40,15 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 100vh;
 
   &.authenticated {
-    max-height: calc(100vh - 3.25rem);
+    height: calc(100vh - 3.25rem);
     overflow-y: auto;
+  }
+
+  > div {
+    margin: auto;
   }
 }
 
@@ -67,4 +70,10 @@ a {
   &:hover, &:active {
     color: var(--loud-red);
   }
+}
+
+.pagination {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
 }
