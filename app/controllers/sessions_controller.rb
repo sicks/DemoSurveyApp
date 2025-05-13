@@ -2,6 +2,8 @@ class SessionsController < ApplicationController
   allow_unauthenticated_access only: %i[ new create ]
   rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_url, alert: "Try again later." }
 
+  before_action :redirect_if_signed_in, only: %i[ new create ]
+
   def new
   end
 
@@ -43,5 +45,9 @@ class SessionsController < ApplicationController
 
   def user_exists?
     User.exists?(email_address: params[:email_address])
+  end
+
+  def redirect_if_signed_in
+    redirect_to after_authentication_url, notice: "You're already logged in" if authenticated?
   end
 end
