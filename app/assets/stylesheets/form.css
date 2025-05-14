@@ -57,3 +57,15 @@ form {
 [data-nested-form-target] {
   display: none;
 }
+
+.question-type {
+  &.short_answer + .option-fields-wrapper {
+    display: none;
+  }
+  &.pick_one + .option-fields-wrapper {
+    display: block;
+  }
+  &.pick_many + .option-fields-wrapper {
+    display: block;
+  }
+}

@@ -1,11 +1,16 @@
-= tag.div class: %w[ question card nested-form-wrapper ], data: { new_record: f.object.new_record? } do
+= tag.div class: %w[ question card nested-form-wrapper ],
+  data: { \
+    controller: "radio-toggle",
+    radio_toggle_input_wrapper_value: ".question-type",
+    new_record: f.object.new_record? } do
+
   = f.hidden_field :id
 
   .field
     = f.label :body, "Question"
     = f.text_field :body, autocomplete: :off, required: true, placeholder: "How are you feeling today?"
 
-  .field
+  .field.question-type data-radio-toggle-target="toggle"
     = f.label :question_type
     .flex.gap.wrap.option-blocks
       - Question.question_types.each do |k, _|
@@ -13,32 +18,29 @@
           = f.radio_button :question_type, k, checked: f.object.send("#{k}?".to_sym)
           span = k.titleize
 
-  = f.label :options
+  = tag.div class: "option-fields-wrapper", data: { \
+    controller: "nested-form radio-toggle",
+    radio_toggle_input_wrapper_value: ".option-layout",
+    nested_form_wrapper_selector_value: ".option-field" } do
 
-  div data-controller="nested-form" data-nested-form-wrapper-selector-value=".option-field"
+    = f.label :options
+
     template data-nested-form-target="template"
-      .option-field.relative data-new-record="true"
-        = f.text_field :options, value: "", multiple: true
-        button.button.remove-option type="button" data-action="nested-form#remove"
-          | &#10005
+      = render "option_field", f: f, value: ""
 
-    = tag.div class: %w[options-fields flex gap wrap].push(f.object.option_layout) do
+    = tag.div class: %w[options-fields flex gap wrap].push(f.object.option_layout),
+      data: { radio_toggle_target: "toggle" } do
+
       - if f.object.options.any?
         - f.object.options.each do |opt|
-          .option-field.relative data-new-record="true"
-            = f.text_field :options, value: opt, multiple: true
-            button.button.remove-option type="button" data-action="nested-form#remove"
-              | &#10005
+          = render "option_field", f: f, value: opt
       - else
         - Array.new(2).each do |opt|
-          .option-field.relative data-new-record="true"
-            = f.text_field :options, value: opt, multiple: true
-            button.button.remove-option type="button" data-action="nested-form#remove"
-              | &#10005
+          = render "option_field", f: f, value: opt
 
       div data-nested-form-target="target"
 
-    .flex.space-between
+    .flex.gap.space-between
       .flex.option-blocks.option-layout
         - Question.option_layouts.each do |k, _|
           label
