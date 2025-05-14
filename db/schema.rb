@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_12_185355) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_14_063325) do
   create_table "questions", force: :cascade do |t|
     t.integer "survey_id"
     t.integer "question_type", default: 0, null: false
@@ -18,6 +18,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_12_185355) do
     t.text "body", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "option_layout", default: 0, null: false
     t.index ["survey_id"], name: "index_questions_on_survey_id"
     t.check_constraint "JSON_TYPE(options) = 'array'", name: "question_options_is_array"
   end
