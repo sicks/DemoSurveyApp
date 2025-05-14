@@ -1,0 +1,21 @@
+= form_with model: @survey do |f|
+  .survey.card
+    .field
+      = f.label :name
+      = f.text_field :name, placeholder: "Survey name"
+
+  .question-fields data-controller="nested-form"
+    template data-nested-form-target="template"
+      = f.fields_for :questions, Question.new, child_index: 'NEW_RECORD' do |qf|
+        = render "question_fields", f: qf
+
+    = f.fields_for :questions do |qf|
+      = render "question_fields", f: qf
+
+    div data-nested-form-target="target"
+
+    .flex.gap.space-between
+      button.button type="button" data-action="nested-form#add"
+        | Add Question
+
+      = f.submit class: "button submit"

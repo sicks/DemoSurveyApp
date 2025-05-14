@@ -1,0 +1,7 @@
+.card-list.surveys
+  header.flex.gap.column
+    h1 Create Survey
+    nav.flex.gap.space-between
+      = link_to "Back", surveys_path, class: "button"
+
+  = render "form"

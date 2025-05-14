@@ -1,10 +1,24 @@
-h1 Surveys
+.card-list.surveys
+  header.flex.gap.column
+    h1 Surveys
+    nav.flex.gap.space-between
+      span
+      = link_to "Create", new_survey_path, class: "button"
 
-.stimulus-test data-controller="hello"
-  | Stimulus isn't working!
+  - @surveys.each do |survey|
+    .survey.card
+      .name
+        = link_to survey.name, survey_path(survey)
+      .meta
+        .question_count
+          = pluralize(survey.questions.count, "question")
+        .response_count
+          = pluralize(0, "response")
 
-.current-user
-  = Current.user.email_address
+  .no-surveys
+    .survey.card
+      p No surveys currently exist.
+      p Create one manually or generate one below.
+      = link_to "Generate Example Survey", "#", class: %w[ button submit ]
 
-.logout
-  = link_to "Log out", session_path, data: { turbo_method: :delete }
+  = paginate @surveys

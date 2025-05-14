@@ -3,6 +3,7 @@ FactoryBot.define do
     survey
     body { "Why?" }
     question_type { :short_answer }
+    option_layout { :row }
 
     factory :pick_one_question do
       body { "Who?" }

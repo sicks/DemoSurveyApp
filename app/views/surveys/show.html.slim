@@ -1,0 +1,20 @@
+.card-list.surveys
+  header.flex.gap.column
+    h1 = @survey.name
+    nav.flex.gap.space-between
+      = link_to "Surveys", surveys_path, class: "button"
+      = link_to "Edit", edit_survey_path(@survey), class: "button"
+
+  - @survey.questions.each_with_index do |q, i|
+    .question.card
+      .number
+        = "Question #{i + 1}."
+      .question_type
+        = q.question_type.humanize
+      .body
+        = q.body
+      - if !q.short_answer?
+        = tag.div class: %w[options flex gap wrap].push(q.option_layout) do
+          - q.options.each do |o|
+            .option = o
+

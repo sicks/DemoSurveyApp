@@ -2,6 +2,7 @@ class Question < ApplicationRecord
   belongs_to :survey
 
   enum :question_type, %w[short_answer pick_one pick_many]
+  enum :option_layout, %w[row column]
 
   validates :body, presence: true
   validate :minimum_number_of_options
