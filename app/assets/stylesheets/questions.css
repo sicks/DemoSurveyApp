@@ -1,0 +1,128 @@
+.question {
+  position: relative;
+  overflow: hidden;
+
+  .question_type {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.25rem 0.5rem;
+    background: var(--pale-green);
+    border-width: 0 0 1px 1px;
+    border-style: solid;
+    border-color: var(--mid-grey);
+    border-radius: 0 0 0 0.25rem;
+    font-size: 0.8125rem;
+    font-weight: bold;
+    text-transform: lowercase;
+  }
+
+  .number {
+    margin-bottom: 0.5rem;
+  }
+
+  .body {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .options {
+    .option {
+      margin: 0;
+      display: block;
+      padding: 1rem;
+      background: var(--calm-green);
+      max-width: 100%;
+    }
+
+    &.row .option {
+      flex: 1 0 auto;
+      text-align: center;
+    }
+
+    &.column .option {
+      flex: 1 0 190%;
+      text-align: left;
+    }
+  }
+
+  .remove-question {
+    padding: 0.5rem;
+    width: 2rem;
+    text-indent: 1px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-width: 0 0 1px 1px;
+    border-radius: 0 0 0 0.25rem;
+    border-color: transparent;
+    text-align: center;
+    font-size: 0.9375rem;
+
+    &:hover {
+      box-shadow: none;
+      background: var(--loud-red);
+      color: var(--light-grey);
+      border-color: var(--mid-grey);
+    }
+  }
+
+  .remove-option {
+    width: 2.0625rem;
+    padding: 0.5rem;
+    text-indent: 1px;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    font-size: 0.9375rem;
+    border-color: transparent;
+    border-radius: 0 0.25rem 0.25rem 0;
+
+    &:hover {
+      box-shadow: none;
+      background: var(--loud-red);
+      color: var(--light-grey);
+      border-color: var(--mid-grey);
+    }
+  }
+
+  .options-fields {
+    margin-bottom: 1rem;
+
+    .option-field:nth-child(1), .option-field:nth-child(2) {
+      [type=text] {
+        padding-right: 0.5rem;
+      }
+
+      .remove-option {
+        display: none;
+      }
+    }
+
+    .option-field {
+      [type=text] {
+        padding-right: 2.0625rem;
+      }
+    }
+
+    &.row .option-field {
+      flex: 1 0 4rem;
+    }
+
+    &.column .option-field {
+      flex: 1 0 100%;
+    }
+  }
+
+  .option-layout {
+    label:first-child span {
+      border-radius: 0.25rem 0 0 0.25rem;
+      padding: 0.5rem 1rem;
+    }
+
+    label:last-child span {
+      border-radius: 0 0.25rem 0.25rem 0;
+      padding: 0.5rem 1rem;
+    }
+  }
+}

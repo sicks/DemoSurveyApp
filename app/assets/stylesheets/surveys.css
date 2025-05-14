@@ -1,0 +1,17 @@
+.surveys {
+  .name {
+    font-size: 1.125rem;
+  }
+
+  .no-surveys {
+    text-align: center;
+
+    > div {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .survey + .no-surveys {
+    display: none;
+  }
+}

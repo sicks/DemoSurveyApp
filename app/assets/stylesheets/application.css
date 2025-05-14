@@ -14,10 +14,11 @@
 :root {
   --light-grey: #F0F2EB;
   --pale-green: #E1EDB9;
+  --calm-green: #89CCBD;
   --pale-yellow: #F4FAD2;
-  --wasabi: #D4EE5E;
-  --loud-red: #FF4242;
+  --loud-red: #DB0000;
   --near-black: #222222;
+  --mid-grey: #666666;
 }
 
 html * {
@@ -27,6 +28,7 @@ html * {
 }
 
 body {
+  position: relative;
   min-height: 100vh;
   margin: 0;
   font-family: 'PT Sans', sans-serif;
@@ -43,7 +45,7 @@ main {
   height: 100vh;
 
   &.authenticated {
-    height: calc(100vh - 3.25rem);
+    height: calc(100vh - 3.3125rem);
     overflow-y: auto;
   }
 
@@ -53,9 +55,13 @@ main {
 }
 
 footer {
+  position: relative;
   padding: 1rem;
   display: flex;
   justify-content: space-between;
+  z-index: 999;
+  border-top: 1px solid var(--mid-grey);
+  box-shadow: 0 -1px 3px 0px rgba(0,0,0,0.25);
 }
 
 a {
@@ -70,6 +76,14 @@ a {
   &:hover, &:active {
     color: var(--loud-red);
   }
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+.relative {
+  position: relative;
 }
 
 .pagination {

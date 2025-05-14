@@ -1,0 +1,38 @@
+.card-list {
+  width: 100%;
+  max-width: 37.5rem;
+  padding: 2rem 0;
+
+  header {
+    margin-bottom: 1rem;
+
+    h1 {
+      margin: 0;
+      text-align: center;
+    }
+  }
+}
+
+.card {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--mid-grey);
+  border-radius: 0.25rem;
+
+  &.survey {
+    background: var(--pale-green);
+  }
+
+  &.question {
+    background: var(--pale-yellow);
+  }
+
+  .meta {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    border-top: 1px solid var(--mid-grey);
+    margin-top: 1rem;
+    padding-top: 0.25rem;
+  }
+}

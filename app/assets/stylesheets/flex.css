@@ -1,0 +1,23 @@
+.flex {
+  display: flex;
+
+  &.gap {
+    gap: 1rem;
+  }
+
+  &.space-between {
+    justify-content: space-between;
+  }
+
+  &.wrap {
+    flex-wrap: wrap;
+  }
+
+  &.row {
+    flex-direction: row;
+  }
+
+  &.column {
+    flex-direction: column;
+  }
+}

@@ -1,6 +1,6 @@
 #flash {
   position: fixed;
-  bottom: 0;
+  bottom: 3.75rem;
   left: 0;
   z-index: 99999;
   padding: 1rem;
@@ -20,7 +20,7 @@
     border-width: 0 0 0 3px;
 
     &.notice, &.success {
-      border-color: var(--wasabi);
+      border-color: var(--calm-green);
     }
 
     &.alert, &.error {
