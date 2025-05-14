@@ -28,20 +28,30 @@ RSpec.describe Question, type: :model do
     context "when question_type is pick_one" do
       let(:one_option_question) { build(:pick_one_question, options: [ "one" ]) }
       let(:no_option_question) { build(:pick_one_question, options: []) }
+      let(:dup_option_question) { build(:pick_one_question, options: [ "same", "same" ]) }
 
       it "must have multiple options" do
         expect(one_option_question.valid?).to be false
         expect(no_option_question.valid?).to be false
+      end
+
+      it "must have unique options" do
+        expect(dup_option_question.valid?).to be false
       end
     end
 
     context "when question_type is pick_many" do
       let(:one_option_question) { build(:pick_many_question, options: [ "one" ]) }
       let(:no_option_question) { build(:pick_many_question, options: []) }
+      let(:dup_option_question) { build(:pick_many_question, options: [ "same", "same" ]) }
 
       it "must have multiple options" do
         expect(one_option_question.valid?).to be false
         expect(no_option_question.valid?).to be false
+      end
+
+      it "must have unique options" do
+        expect(dup_option_question.valid?).to be false
       end
     end
   end
