@@ -16,7 +16,7 @@ class Question < ApplicationRecord
   end
 
   def options_are_unique
-    options.select!{ |v| !v.strip.blank? }
+    options.select! { |v| !v.strip.blank? }
     return unless !short_answer? && options.length != options.uniq.length
     errors.add(:base, :invalid, message: "Options must be unique")
   end
