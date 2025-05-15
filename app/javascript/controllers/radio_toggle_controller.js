@@ -1,15 +1,11 @@
 import { Controller } from '@hotwired/stimulus'
 
 export default class extends Controller {
-  static targets = [ "toggle" ]
-  static values = {
-    inputWrapper: String
-  }
+  static targets = [ "toggle", "wrapper" ]
 
   connect() {
     this.toRemove = []
-    let wrapper = this.element.querySelector(this.inputWrapperValue)
-    this.element.querySelectorAll(this.inputWrapperValue + " [type=radio]").forEach((input) => {
+    this.wrapperTarget.querySelectorAll("[type=radio]").forEach((input) => {
       this.toRemove.push(input.value)
       input.addEventListener('change', this.handleChange.bind(this))
     })
@@ -17,8 +13,8 @@ export default class extends Controller {
   }
 
   handleChange(e) {
-    let wrapper = this.element.querySelector(this.inputWrapperValue)
+    let value = this.wrapperTarget.querySelector("[type=radio]:checked").value
     this.toggleTarget.classList.remove(...this.toRemove)
-    this.toggleTarget.classList.add(wrapper.querySelector("[type=radio]:checked").value)
+    this.toggleTarget.classList.add(value)
   }
 }
