@@ -23,27 +23,6 @@
 
   .body {
     font-size: 1.125rem;
-    margin-bottom: 0.5rem;
-  }
-
-  .options {
-    .option {
-      margin: 0;
-      display: block;
-      padding: 1rem;
-      background: var(--calm-green);
-      max-width: 100%;
-    }
-
-    &.row .option {
-      flex: 1 0 auto;
-      text-align: center;
-    }
-
-    &.column .option {
-      flex: 1 0 190%;
-      text-align: left;
-    }
   }
 
   .remove-question {
@@ -86,10 +65,8 @@
     }
   }
 
-  .options-fields {
-    margin-bottom: 1rem;
-
-    .option-field:nth-child(1), .option-field:nth-child(2) {
+  .options {
+    .option:nth-child(1), .option:nth-child(2) {
       [type=text] {
         padding-right: 0.5rem;
       }
@@ -99,18 +76,29 @@
       }
     }
 
-    .option-field {
+    .option {
       [type=text] {
         padding-right: 2.0625rem;
       }
     }
 
-    &.row .option-field {
+    &.row .option {
       flex: 1 0 4rem;
+      text-align: center;
     }
 
-    &.column .option-field {
-      flex: 1 0 100%;
+    &.column .option {
+      flex: 0 0 100%;
+    }
+
+    &.list {
+      margin-top: 0.5rem;
+
+      .option {
+        padding: 1rem;
+        background: var(--calm-green);
+        border-radius: 0.25rem;
+      }
     }
   }
 
