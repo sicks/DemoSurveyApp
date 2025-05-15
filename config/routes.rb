@@ -14,4 +14,5 @@ Rails.application.routes.draw do
 
   resource :session
   resources :surveys
+  resources :responses
 end

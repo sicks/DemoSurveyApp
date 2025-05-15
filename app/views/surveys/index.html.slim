@@ -13,7 +13,7 @@
         .question_count
           = pluralize(survey.questions.count, "question")
         .response_count
-          = pluralize(0, "response")
+          = pluralize(survey.responses.for_user(Current.user).count, "response")
 
   .no-surveys
     .survey.card
