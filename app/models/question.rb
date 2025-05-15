@@ -4,20 +4,16 @@ class Question < ApplicationRecord
   enum :question_type, %w[short_answer pick_one pick_many]
   enum :option_layout, %w[row column]
 
+  before_validation :ensure_at_least_2_options
+
   validates :body, presence: true
-  validate :minimum_number_of_options
-  validate :options_are_unique
 
   private
 
-  def minimum_number_of_options
-    return unless !short_answer? && options.length < 2
-    errors.add(:base, :invalid, message: "More than one option is required for pick one/many")
-  end
-
-  def options_are_unique
-    options.select! { |v| !v.strip.blank? }
-    return unless !short_answer? && options.length != options.uniq.length
-    errors.add(:base, :invalid, message: "Options must be unique")
+  def ensure_at_least_2_options
+    return unless (2 - options.count).positive?
+    while options.count < 2 do
+      options.push("")
+    end
   end
 end
