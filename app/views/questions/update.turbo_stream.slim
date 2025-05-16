@@ -1,0 +1,3 @@
+- if @question.errors.any?
+  = turbo_stream.replace dom_id(@question) do
+    = render "questions/question", question: @question

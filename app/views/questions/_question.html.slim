@@ -1,0 +1,41 @@
+= tag.div id: dom_id(question), class: %w[ card question ], data: { controller: "radio-toggle" } do
+  - unless question.new_record?
+    = link_to survey_question_path(@survey, question), class: %w[ button remove-question ],
+      data: { turbo_method: :delete }, tabindex: -1 do
+      | &#10005
+
+  = form_with model: question, url: survey_question_path(@survey, question), id: dom_id(question, :form),
+    data: { controller: :form, action: "change->form#submit" } do |f|
+    .field.body
+      = f.label :body, "Question"
+      = f.text_field :body, autocomplete: :off, required: true, placeholder: "How are you feeling today?"
+
+    .field.question-type data-radio-toggle-target="toggle"
+      label Question Type
+      .flex.gap.wrap data-radio-toggle-target="wrapper"
+        - Question.question_types.each do |k, _|
+          label.radio-block
+            = f.radio_button :question_type, k, checked: f.object.send("#{k}?".to_sym), id: nil
+            span = k.titleize
+
+    = tag.div class: "options-wrapper",
+      data: { controller: "radio-toggle options", options_form_outlet: "##{dom_id(question, :form)}" } do
+      label Options
+
+      template data-options-target="template"
+        = render "questions/option_field", f: f, value: ""
+
+      .field.options.flex.gap.wrap data-radio-toggle-target="toggle" data-options-target="wrapper"
+        - f.object.options.each do |opt|
+          = render "questions/option_field", f: f, value: opt
+
+      .flex.gap.space-between
+        .flex.option-layout data-radio-toggle-target="wrapper"
+          - Question.option_layouts.each do |k, _|
+            label.radio-block
+              = f.radio_button :option_layout, k, checked: f.object.send("#{k}?".to_sym), id: nil
+              span = k.titleize
+
+        button.button type="button" data-action="options#add"
+          | Add Option
+

@@ -1,21 +1,14 @@
-= form_with model: @survey do |f|
-  .survey.card
-    .field
-      = f.label :name
-      = f.text_field :name, placeholder: "Survey name"
+= render "surveys/survey", survey: @survey
 
-  .question-fields data-controller="nested-form"
-    template data-nested-form-target="template"
-      = f.fields_for :questions, Question.new, child_index: 'NEW_RECORD' do |qf|
-        = render "question_fields", f: qf
+#questions
+  - @survey.questions.each do |question|
+    = render "questions/question", question: question
 
-    = f.fields_for :questions do |qf|
-      = render "question_fields", f: qf
-
-    div data-nested-form-target="target"
-
-    .flex.gap.space-between
-      button.button type="button" data-action="nested-form#add"
-        | Add Question
-
-      = f.submit class: "button submit"
+.flex.gap.space-between
+  span
+  - if @survey.new_record?
+    = tag.button id: :add_question, class: :button, type: :submit, form: :survey_form do
+      | Create Survey
+  - else
+    = button_to survey_questions_path(@survey), id: :add_question, class: "button", data: { turbo_method: :post } do
+      | Add Question

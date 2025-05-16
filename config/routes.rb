@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   root "surveys#index"
 
   resource :session
-  resources :surveys
-  resources :responses
+  resources :surveys do
+    resources :questions
+  end
 end

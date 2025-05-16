@@ -1,0 +1,3 @@
+- if @survey.errors.any?
+  = turbo_stream.replace dom_id(@survey) do
+    = render "surveys/survey", survey: @survey
