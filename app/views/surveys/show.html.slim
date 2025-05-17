@@ -7,10 +7,10 @@
 
   - @survey.questions.each_with_index do |q, i|
     .question.card
+      .corner
+        .tag = q.question_type.humanize
       .number
         = "Question #{i + 1}."
-      .question-type-tag
-        = q.question_type.humanize
       .body
         = q.body
       - if !q.short_answer?

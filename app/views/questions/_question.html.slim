@@ -1,8 +1,9 @@
 = tag.div id: dom_id(question), class: %w[ card question ], data: { controller: "radio-toggle" } do
   - unless question.new_record?
-    = link_to survey_question_path(@survey, question), class: %w[ button remove-question ],
-      data: { turbo_method: :delete }, tabindex: -1 do
-      | &#10005
+    .corner
+      = link_to survey_question_path(@survey, question), class: %w[ button delete ],
+        data: { turbo_method: :delete }, tabindex: -1 do
+        | &#10005
 
   = form_with model: question, url: survey_question_path(@survey, question), id: dom_id(question, :form),
     data: { controller: :form, action: "change->form#submit" } do |f|

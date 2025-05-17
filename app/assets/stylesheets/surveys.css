@@ -1,8 +1,12 @@
-.surveys {
-  .name {
+.survey {
+  background: var(--pale-green);
+
+  .show {
     font-size: 1.125rem;
   }
+}
 
+.surveys {
   .no-surveys {
     text-align: center;
 

@@ -20,4 +20,8 @@
   &.column {
     flex-direction: column;
   }
+
+  > .grow {
+    flex-grow: 1;
+  }
 }

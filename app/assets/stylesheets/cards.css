@@ -14,17 +14,61 @@
 }
 
 .card {
+  position: relative;
+  overflow: hidden;
   padding: 1rem;
   margin-bottom: 1rem;
   border: 1px solid var(--mid-grey);
   border-radius: 0.25rem;
 
-  &.survey {
-    background: var(--pale-green);
-  }
 
-  &.question {
-    background: var(--pale-yellow);
+  .corner {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 3;
+
+    .tag {
+      padding: 0.25rem 0.5rem;
+      border-style: solid;
+      font-size: 0.8125rem;
+      font-weight: bold;
+      text-transform: lowercase;
+
+      &:first-child {
+        border-radius: 0 0 0 0.25rem;
+        border-width: 0 0 1px 1px;
+      }
+
+      &:not(:first-child) {
+        border-radius: 0;
+        border-width: 0 0 1px 0;
+      }
+    }
+
+    .button {
+      padding: 0.5rem;
+      border-color: transparent;
+      text-align: center;
+      font-size: 0.9375rem;
+      opacity: 0.75;
+
+      &:not(:last-child) {
+        border-radius: 0 0 0.25rem 0.25rem;
+        border-width: 0 1px 1px 1px;
+        margin-right: 0.5rem;
+      }
+
+      &:last-child {
+        border-radius: 0 0 0 0.25rem;
+        border-width: 0 0 1px 1px;
+      }
+
+      &:hover {
+        border-color: var(--mid-grey);
+        opacity: 1;
+      }
+    }
   }
 
   .meta {

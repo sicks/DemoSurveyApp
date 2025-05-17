@@ -1,21 +1,23 @@
 .question {
-  position: relative;
-  overflow: hidden;
+  background: var(--pale-yellow);
 
-  .question-type-tag {
-    position: absolute;
-    top: 0;
-    right: 0;
-    padding: 0.25rem 0.5rem;
-    background: var(--pale-green);
-    border-width: 0 0 1px 1px;
-    border-style: solid;
-    border-color: var(--mid-grey);
-    border-radius: 0 0 0 0.25rem;
-    font-size: 0.8125rem;
-    font-weight: bold;
-    text-transform: lowercase;
+  .corner {
+    .tag {
+      background: var(--pale-green);
+      border-color: var(--mid-grey);
+    }
+
+    .delete {
+      width: 2rem;
+      text-indent: 1px;
+
+      &:hover {
+        background: var(--loud-red);
+        color: var(--light-grey);
+      }
+    }
   }
+
 
   .number {
     margin-bottom: 0.5rem;
@@ -23,27 +25,6 @@
 
   .body {
     font-size: 1.125rem;
-  }
-
-  .remove-question {
-    padding: 0.5rem;
-    width: 2rem;
-    text-indent: 1px;
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-width: 0 0 1px 1px;
-    border-radius: 0 0 0 0.25rem;
-    border-color: transparent;
-    text-align: center;
-    font-size: 0.9375rem;
-
-    &:hover {
-      box-shadow: none;
-      background: var(--loud-red);
-      color: var(--light-grey);
-      border-color: var(--mid-grey);
-    }
   }
 
   .remove-option {
