@@ -13,7 +13,7 @@ class SurveysController < ApplicationController
     @survey = Survey.create(survey_params)
 
     if @survey.errors.any?
-      render :create
+      render :create, status: :bad_request
     else
       @survey.questions.create!(body: "Who?")
       redirect_to edit_survey_path(@survey), notice: "Survey Created!"
@@ -22,6 +22,8 @@ class SurveysController < ApplicationController
 
   def update
     @survey.update(survey_params)
+
+    render :update, status: :bad_request if @survey.errors.any?
   end
 
   def destroy

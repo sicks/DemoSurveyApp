@@ -20,6 +20,11 @@
   margin-bottom: 1rem;
   border: 1px solid var(--mid-grey);
   border-radius: 0.25rem;
+  transition: border 0.3s ease;
+
+  &.invalid {
+    border-color: var(--loud-red);
+  }
 
 
   .corner {

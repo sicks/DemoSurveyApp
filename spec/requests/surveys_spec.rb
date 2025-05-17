@@ -28,9 +28,9 @@ RSpec.describe "Surveys", type: :request do
     it { expect(response).to redirect_to(edit_survey_path(Survey.last)).and have_http_status(:found) }
 
     context "with invalid params" do
-      let(:params) { { survey: { body: "" } } }
+      let(:params) { { survey: { name: "" } } }
 
-      it { expect(response).to have_http_status(:ok) }
+      it { expect(response).to have_http_status(:bad_request) }
     end
   end
 
@@ -46,10 +46,16 @@ RSpec.describe "Surveys", type: :request do
     it { expect(response).to have_http_status :ok }
   end
 
-  describe "PUT /surveys/:id" do
-    before { put survey_path(survey, params:, format: :turbo_stream) }
+  describe "PATCH /surveys/:id" do
+    before { patch survey_path(survey, params:, format: :turbo_stream) }
 
     it { expect(response).to have_http_status :ok }
+
+    context "with invalid params" do
+      let(:params) { { survey: { name: "" } } }
+
+      it { expect(response).to have_http_status(:bad_request) }
+    end
   end
 
   describe "DELETE /surveys/:id" do

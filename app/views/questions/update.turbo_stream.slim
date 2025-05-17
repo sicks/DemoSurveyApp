@@ -1,3 +1,7 @@
-- if @question.errors.any?
-  = turbo_stream.replace dom_id(@question) do
-    = render "questions/question", question: @question
+= turbo_stream.replace dom_id(@question, :body_errors) do
+  = tag.label id: dom_id(@question, :body_errors), class: :error, for: dom_id(@question, :body)
+    = @question.errors[:body].to_sentence
+
+= turbo_stream.replace dom_id(@question, :options_errors) do
+  = tag.label id: dom_id(@question, :options_errors), class: :error
+    = @question.errors[:options].to_sentence

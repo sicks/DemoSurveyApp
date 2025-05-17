@@ -8,6 +8,8 @@ class QuestionsController < ApplicationController
 
   def update
     @question.update(question_params)
+
+    render :update, status: :bad_request if @question.errors.any?
   end
 
   def destroy

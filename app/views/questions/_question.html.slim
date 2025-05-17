@@ -8,8 +8,9 @@
   = form_with model: question, url: survey_question_path(@survey, question), id: dom_id(question, :form),
     data: { controller: :form, action: "change->form#submit" } do |f|
     .field.body
-      = f.label :body, "Question"
-      = f.text_field :body, autocomplete: :off, required: true, placeholder: "How are you feeling today?"
+      = f.label :body, "Question", for: dom_id(question, :body)
+      = tag.label id: dom_id(question, :body_errors), class: :error, for: dom_id(question, :body)
+      = f.text_field :body, id: dom_id(question, :body), autocomplete: :off, placeholder: "How are you feeling today?"
 
     .field.question-type data-radio-toggle-target="toggle"
       label Question Type
@@ -22,6 +23,7 @@
     = tag.div class: "options-wrapper",
       data: { controller: "radio-toggle options", options_form_outlet: "##{dom_id(question, :form)}" } do
       label Options
+      = tag.label id: dom_id(question, :options_errors), class: :error
 
       template data-options-target="template"
         = render "questions/option_field", f: f, value: ""

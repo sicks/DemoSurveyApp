@@ -20,7 +20,7 @@ form {
         content: "\00a0";
       }
 
-      &:not(:empty) ~ input {
+      &:not(:empty) ~ input, &:not(:empty) ~ .field input {
         border-color: var(--loud-red);
         background: color-mix(in srgb, var(--loud-red) 3%, white);
       }
