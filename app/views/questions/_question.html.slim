@@ -31,12 +31,13 @@
           = render "questions/option_field", f: f, value: opt
 
       .flex.gap.space-between
+        button.button type="button" data-action="options#add"
+          | Add Option
+
         .flex.option-layout data-radio-toggle-target="wrapper"
           - Question.option_layouts.each do |k, _|
             label.radio-block
               = f.radio_button :option_layout, k, checked: f.object.send("#{k}?".to_sym), id: nil
               span = k.titleize
 
-        button.button type="button" data-action="options#add"
-          | Add Option
 

@@ -5,10 +5,10 @@
     = render "questions/question", question: question
 
 .flex.gap.space-between
-  span
-  - if @survey.new_record?
-    = tag.button id: :add_question, class: :button, type: :submit, form: :survey_form do
-      | Create Survey
-  - else
+  - if @survey.persisted?
     = button_to survey_questions_path(@survey), id: :add_question, class: "button", data: { turbo_method: :post } do
       | Add Question
+  - else
+    span
+    = tag.button id: :add_question, class: %w[ button submit ], type: :submit, form: :survey_form do
+      | Create Survey
