@@ -4,16 +4,19 @@ class Question < ApplicationRecord
   enum :question_type, %w[short_answer pick_one pick_many]
   enum :option_layout, %w[row column]
 
-  before_validation :ensure_at_least_2_options
+  before_validation :strip_empty_options
 
   validates :body, presence: true
+  validate :uniqueness_of_options
 
   private
 
-  def ensure_at_least_2_options
-    return unless (2 - options.count).positive?
-    while options.count < 2 do
-      options.push("")
-    end
+  def strip_empty_options
+    options.map!{ |o| o.to_s.strip }.select!{ |o| o.present? }
+  end
+
+  def uniqueness_of_options
+    return if options == options.uniq
+    errors.add(:options, :invalid, message: "must be unique")
   end
 end
