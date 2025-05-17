@@ -12,7 +12,11 @@ class SurveysController < ApplicationController
   def create
     @survey = Survey.create(survey_params)
 
-    redirect_to edit_survey_path(@survey), notice: "Survey Created!" unless @survey.errors.any?
+    if @survey.errors.any?
+      render :create
+    else
+      redirect_to edit_survey_path(@survey), notice: "Survey Created!"
+    end
   end
 
   def update
