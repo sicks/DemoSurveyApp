@@ -3,16 +3,33 @@ form {
 
   .field {
     margin-bottom: 0.75rem;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   label {
-    display: block;
+    display: inline-block;
     margin-bottom: 0.25rem;
     text-align: left;
     line-height: 1;
+
+    &.error {
+      &::before {
+        content: "\00a0";
+      }
+
+      &:not(:empty) ~ input {
+        border-color: var(--loud-red);
+        background: color-mix(in srgb, var(--loud-red) 3%, white);
+      }
+    }
   }
 
   input {
+    transition: background 0.3s ease, border 0.3s ease;
+
     &:focus {
       outline: none;
     }

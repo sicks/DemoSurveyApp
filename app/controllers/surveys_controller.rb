@@ -10,14 +10,13 @@ class SurveysController < ApplicationController
   end
 
   def create
-    @survey = Survey.create!(survey_params)
-    @survey.questions.create(body: "Who?")
+    @survey = Survey.create(survey_params)
 
-    redirect_to edit_survey_path(@survey), notice: "Survey Created!"
+    redirect_to edit_survey_path(@survey), notice: "Survey Created!" unless @survey.errors.any?
   end
 
   def update
-    @survey.update!(survey_params)
+    @survey.update(survey_params)
   end
 
   def destroy
