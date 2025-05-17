@@ -15,6 +15,7 @@ class SurveysController < ApplicationController
     if @survey.errors.any?
       render :create
     else
+      @survey.questions.create!(body: "Who?")
       redirect_to edit_survey_path(@survey), notice: "Survey Created!"
     end
   end
