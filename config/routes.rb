@@ -17,6 +17,6 @@ Rails.application.routes.draw do
     collection do
       post :generate
     end
-    resources :questions
+    resources :questions, only: %i[ create update destroy ]
   end
 end

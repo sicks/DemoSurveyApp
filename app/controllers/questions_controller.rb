@@ -1,19 +1,9 @@
 class QuestionsController < ApplicationController
   before_action :set_survey
-  before_action :set_question, only: %i[ show edit update destroy ]
-
-  def index
-    @questions = @survey.questions
-  end
+  before_action :set_question, only: %i[ update destroy ]
 
   def create
     @question = Question.create!(survey: @survey, body: "Who?")
-  end
-
-  def show
-  end
-
-  def edit
   end
 
   def update
