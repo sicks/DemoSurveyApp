@@ -5,4 +5,12 @@
       = link_to "Surveys", surveys_path, class: "button"
       = link_to "View Survey", survey_path(@survey), class: "button"
 
-  = render "form"
+  = render "surveys/survey", survey: @survey
+
+  #questions
+    - @survey.questions.each do |question|
+      = render "questions/question", question: question
+
+  .flex.gap.space-between
+    = button_to survey_questions_path(@survey), id: :add_question, class: "button" do
+      | Add Question

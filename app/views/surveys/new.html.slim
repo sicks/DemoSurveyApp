@@ -4,4 +4,9 @@
     nav.flex.gap.space-between
       = link_to "Surveys", surveys_path, class: "button"
 
-  = render "form"
+  = render "surveys/survey", survey: @survey
+
+  .flex.gap.space-between
+    span
+    = tag.button id: :add_question, class: %w[ button submit ], type: :submit, form: :survey_form do
+      | Create Survey

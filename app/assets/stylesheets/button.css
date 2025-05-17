@@ -17,8 +17,13 @@
     width: 100%
   }
 
-  &.submit {
+  &.submit:hover {
     background: var(--calm-green);
+  }
+
+  &.delete:hover {
+    background: var(--loud-red);
+    color: white;
   }
 
   &:link, &:visited {

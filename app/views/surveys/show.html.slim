@@ -18,3 +18,8 @@
           - q.options.each do |o|
             .option = o
 
+  .flex.gap.space-between
+    span
+    = button_to survey_path(@survey), id: :add_question, class: "button delete", method: :delete,
+      data: { turbo_confirm: "Are you sure?" } do
+      | Delete Survey
