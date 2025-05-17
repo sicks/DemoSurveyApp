@@ -1,5 +1,6 @@
 = tag.div id: dom_id(@survey), class: %i[ survey card ] do
-  = form_with model: @survey, id: :survey_form, data: { controller: :form, action: "change->form#submit" } do |f|
+  = form_with model: @survey, id: :survey_form,
+    data: { controller: :form, action: ("change->form#submit" if !@survey.new_record?) } do |f|
     .field
       = f.label :name
       = f.text_field :name, placeholder: "Survey name"
