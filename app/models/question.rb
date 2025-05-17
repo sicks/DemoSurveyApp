@@ -5,11 +5,17 @@ class Question < ApplicationRecord
   enum :option_layout, %w[row column]
 
   before_validation :strip_empty_options
+  before_validation :set_default_options
 
   validates :body, presence: true
   validate :uniqueness_of_options
 
   private
+
+  def set_default_options
+    options[0] = "Option 1" if options[0].blank?
+    options[1] = "Option 2" if options[1].blank?
+  end
 
   def strip_empty_options
     options.map! { |o| o.to_s.strip }.select! { |o| o.present? }

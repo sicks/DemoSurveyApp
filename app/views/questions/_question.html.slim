@@ -29,10 +29,7 @@
         = render "questions/option_field", f: f, value: ""
 
       .field.options.flex.gap.wrap data-radio-toggle-target="toggle" data-options-target="wrapper"
-        - options = f.object.options
-        - options[0] = "Option 1" if options[0].blank?
-        - options[1] = "Option 2" if options[1].blank?
-        - options.each do |opt|
+        - f.object.options.each do |opt|
           = render "questions/option_field", f: f, value: opt
 
       .flex.gap.space-between

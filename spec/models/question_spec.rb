@@ -23,9 +23,18 @@ RSpec.describe Question, type: :model do
 
   describe "callbacks:" do
     specify "blank options are stripped before validation" do
-      question.options = [ nil, "", " ", " test " ]
+      question.options = [ nil, "", " ", " test ", "valid" ]
       question.validate
-      expect(question.options).to eq [ "test" ]
+      expect(question.options).to eq [ "test", "valid" ]
+    end
+
+    specify "default options are set when fewer than 2 exist" do
+      question.options = []
+      question.validate
+      expect(question.options).to eq [ "Option 1", "Option 2" ]
+      question.options = [ "test" ]
+      question.validate
+      expect(question.options).to eq [ "test", "Option 2" ]
     end
   end
 end
