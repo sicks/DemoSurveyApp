@@ -1,6 +1,6 @@
 = tag.div id: dom_id(@survey), class: %i[ survey card ] do
   = form_with model: @survey, id: :survey_form,
-    data: { controller: :form, action: ("change->form#submit" if !@survey.new_record?) } do |f|
+    data: { controller: :form, action: ("change->form#submit" if @survey.persisted?) } do |f|
     .field
       = f.label :name
       = tag.label id: dom_id(@survey, :name_errors), class: :error, for: :survey_name
