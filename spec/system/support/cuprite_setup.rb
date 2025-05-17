@@ -8,7 +8,8 @@ Capybara.register_driver(:better_cuprite) do |app|
       browser_options: {},
       process_timeout: 10,
       inspector: true,
-      headless: !ENV["HEADLESS"].in?(%w[n 0 no false])
+      headless: !ENV["HEADLESS"].in?(%w[n 0 no false]),
+      url_whitelist: [ %r{http://127.0.0.1} ]
     }
   )
 end
