@@ -10,15 +10,15 @@
       .name
         = link_to survey.name, survey_path(survey)
       .meta
-        .question_count
+        .question-count
           = pluralize(survey.questions.count, "question")
-        .response_count
+        .response-count
           = pluralize(survey.responses.for_user(Current.user).count, "response")
 
   .no-surveys
     .survey.card
       p No surveys currently exist.
       p Create one manually or generate one below.
-      = link_to "Generate Example Survey", "#", class: %w[ button submit ]
+      = button_to "Generate Example Survey", generate_surveys_path, class: %w[ button submit ]
 
   = paginate @surveys

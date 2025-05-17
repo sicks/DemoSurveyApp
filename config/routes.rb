@@ -14,6 +14,9 @@ Rails.application.routes.draw do
 
   resource :session
   resources :surveys do
+    collection do
+      post :generate
+    end
     resources :questions
   end
 end
