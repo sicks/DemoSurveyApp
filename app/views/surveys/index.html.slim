@@ -2,18 +2,20 @@
   header.flex.gap.column
     h1 Surveys
     nav.flex.gap.space-between
-      span
+      = link_to "Responses", responses_path, class: "button"
       = link_to "Create", new_survey_path, class: "button"
 
   - @surveys.each do |survey|
     .survey.card
-      .show
-        = link_to survey.name, survey_path(survey)
-      .meta
+      .flex.gap.space-between
+        .show
+          = link_to survey.name, survey_path(survey)
         .question-count
           = pluralize(survey.questions.count, "question")
+      .meta.flex.gap.space-between
         .response-count
           = pluralize(survey.responses.for_user(Current.user).count, "response")
+        = button_to "New Response", survey_responses_path(survey), class: "button"
 
   .no-surveys
     .survey.card
