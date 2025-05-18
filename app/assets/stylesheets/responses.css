@@ -1,0 +1,23 @@
+.response {
+  background: var(--response-main);
+
+  .corner .tag {
+    background: var(--response-alt);
+  }
+
+  & + .no-responses {
+    display: none;
+  }
+
+  a:hover, a:active {
+    color: var(--response-link);
+  }
+}
+
+.no-responses {
+  text-align: center;
+
+  > div {
+    margin-bottom: 1rem;
+  }
+}

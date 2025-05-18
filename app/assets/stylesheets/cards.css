@@ -18,14 +18,13 @@
   overflow: hidden;
   padding: 1rem;
   margin-bottom: 1rem;
-  border: 1px solid var(--mid-grey);
+  border: 1px solid var(--border);
   border-radius: 0.25rem;
   transition: border 0.3s ease;
 
   &.invalid {
-    border-color: var(--loud-red);
+    border-color: var(--error);
   }
-
 
   .corner {
     position: absolute;
@@ -70,18 +69,19 @@
       }
 
       &:hover {
-        border-color: var(--mid-grey);
+        border-color: var(--border);
         opacity: 1;
       }
     }
   }
 
+  .show {
+    font-size: 1.125rem;
+  }
+
   .meta {
-    display: flex;
-    gap: 1rem;
-    justify-content: space-between;
-    border-top: 1px solid var(--mid-grey);
+    border-top: 1px solid var(--border);
     margin-top: 1rem;
-    padding-top: 0.25rem;
+    padding-top: 1rem;
   }
 }

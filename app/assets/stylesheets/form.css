@@ -21,8 +21,8 @@ form {
       }
 
       &:not(:empty) ~ input, &:not(:empty) ~ .field input {
-        border-color: var(--loud-red);
-        background: color-mix(in srgb, var(--loud-red) 3%, white);
+        border-color: var(--error);
+        background: color-mix(in srgb, var(--error) 3%, white);
       }
     }
   }
@@ -37,7 +37,7 @@ form {
     &[type=text], &[type=email], &[type=password] {
       width: 100%;
       padding: 0.5rem 0.5rem;
-      border: 1px solid var(--mid-grey);
+      border: 1px solid var(--border);
       border-radius: 0.25rem;
     }
 
@@ -60,14 +60,9 @@ form {
     box-shadow: 1px 1px 3px 0px rgba(0,0,0,0.25);
   }
 
-  [type=radio]:checked ~ span, [type=checkbox]:checked ~ span {
-    background: var(--calm-green);
-  }
-
   span {
     display: block;
     padding: 1rem;
-    background: var(--pale-green);
     text-align: center;
     border-radius: 0.25rem;
     transition: background 0.3s ease, box-shadow 0.3s ease;

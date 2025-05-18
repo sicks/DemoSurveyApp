@@ -1,10 +1,10 @@
 .question {
-  background: var(--pale-yellow);
+  background: var(--survey-alt);
 
   .corner {
     .tag {
-      background: var(--pale-green);
-      border-color: var(--mid-grey);
+      background: var(--survey-main);
+      border-color: var(--border);
     }
 
     .delete {
@@ -12,12 +12,11 @@
       text-indent: 1px;
 
       &:hover {
-        background: var(--loud-red);
-        color: var(--light-grey);
+        background: var(--error);
+        color: var(--background);
       }
     }
   }
-
 
   .number {
     margin-bottom: 0.5rem;
@@ -40,9 +39,18 @@
 
     &:hover {
       box-shadow: none;
-      background: var(--loud-red);
-      color: var(--light-grey);
-      border-color: var(--mid-grey);
+      background: var(--error);
+      color: var(--background);
+      border-color: var(--border);
+    }
+  }
+
+  .radio-block {
+    [type=radio]:checked ~ span, [type=checkbox]:checked ~ span {
+      background: var(--survey-selection);
+    }
+    span {
+      background: var(--survey-main);
     }
   }
 
@@ -77,7 +85,7 @@
 
       .option {
         padding: 1rem;
-        background: var(--calm-green);
+        background: var(--survey-selection);
         border-radius: 0.25rem;
       }
     }

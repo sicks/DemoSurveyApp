@@ -11,16 +11,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-:root {
-  --light-grey: #F0F2EB;
-  --pale-green: #E1EDB9;
-  --calm-green: #89CCBD;
-  --pale-yellow: #F4FAD2;
-  --loud-red: #DB0000;
-  --near-black: #222222;
-  --mid-grey: #666666;
-}
-
 html * {
   color-profile: sRGB;
   rendering-intent: auto;
@@ -32,8 +22,8 @@ body {
   min-height: 100vh;
   margin: 0;
   font-family: 'PT Sans', sans-serif;
-  color: var(--near-black);
-  background: var(--light-grey);
+  color: var(--text);
+  background: var(--background);
 }
 
 main {
@@ -60,7 +50,7 @@ footer {
   display: flex;
   justify-content: space-between;
   z-index: 999;
-  border-top: 1px solid var(--mid-grey);
+  border-top: 1px solid var(--border);
   box-shadow: 0 -1px 3px 0px rgba(0,0,0,0.25);
 }
 
@@ -70,11 +60,7 @@ a {
 
   &:link, &:visited {
     text-decoration: none;
-    color: var(--near-black);
-  }
-
-  &:hover, &:active {
-    color: var(--loud-red);
+    color: var(--text);
   }
 }
 

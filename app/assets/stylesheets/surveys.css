@@ -1,21 +1,19 @@
 .survey {
-  background: var(--pale-green);
+  background: var(--survey-main);
 
-  .show {
-    font-size: 1.125rem;
+  & + .no-surveys {
+    display: none;
+  }
+
+  a:hover, a:active {
+    color: var(--survey-link);
   }
 }
 
-.surveys {
-  .no-surveys {
-    text-align: center;
+.no-surveys {
+  text-align: center;
 
-    > div {
-      margin-bottom: 1rem;
-    }
-  }
-
-  .survey + .no-surveys {
-    display: none;
+  > div {
+    margin-bottom: 1rem;
   }
 }

@@ -1,0 +1,17 @@
+:root {
+  --background: #F0F2EB;
+  --text: #222222;
+  --border: #666666;
+  --success: #89CCBD;
+  --error: #DB0000;
+
+  --survey-main: #E1EDB9;
+  --survey-alt: #F4FAD2;
+  --survey-selection: #89CCBD;
+  --survey-link: #3F7D58;
+
+  --response-main: #D0E8F2;
+  --response-alt: #E8F9FD;
+  --response-selection: #96C9F4;
+  --response-link: #151965;
+}
