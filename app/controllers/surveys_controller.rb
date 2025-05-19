@@ -1,5 +1,6 @@
 class SurveysController < ApplicationController
   before_action :set_survey, only: %i[ show edit update destroy ]
+  before_action :ensure_editable, only: %i[ edit update destroy ]
 
   def index
     @surveys = Survey.all.page(params[:page])
@@ -52,5 +53,9 @@ class SurveysController < ApplicationController
 
   def set_survey
     @survey = Survey.find(params[:id])
+  end
+
+  def ensure_editable
+    redirect_to survey_path(@survey), alert: "You cannot edit a survey once it has responses" unless @survey.editable?
   end
 end

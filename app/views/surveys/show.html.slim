@@ -3,7 +3,8 @@
     h1 = @survey.name
     nav.flex.gap.space-between
       = link_to "Surveys", surveys_path, class: "button"
-      = link_to "Edit", edit_survey_path(@survey), class: "button"
+      - if @survey.editable?
+        = link_to "Edit", edit_survey_path(@survey), class: "button"
 
   - @survey.questions.each_with_index do |q, i|
     .question.card
@@ -18,8 +19,9 @@
           - q.options.each do |o|
             .option = o
 
-  .flex.gap.space-between
-    span
-    = button_to survey_path(@survey), id: :add_question, class: "button delete", method: :delete,
-      data: { turbo_confirm: "Are you sure?" } do
-      | Delete Survey
+  - if @survey.editable?
+    .flex.gap.space-between
+      span
+      = button_to survey_path(@survey), id: :add_question, class: "button delete", method: :delete,
+        data: { turbo_confirm: "Are you sure?" } do
+        | Delete Survey

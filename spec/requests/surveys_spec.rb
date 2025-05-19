@@ -69,4 +69,26 @@ RSpec.describe "Surveys", type: :request do
 
     it { expect(response).to redirect_to(surveys_path).and have_http_status :found }
   end
+
+  context "when responses exist" do
+    let!(:response) { create(:response, survey:) }
+
+    describe "GET /surveys/:id/edit" do
+      before { get edit_survey_path(survey) }
+
+      it { expect(response).to redirect_to survey_path(survey) }
+    end
+
+    describe "PATCH /surveys/:id" do
+      before { patch survey_path(survey, params:, format: :turbo_stream) }
+
+      it { expect(response).to redirect_to survey_path(survey) }
+    end
+
+    describe "DELETE /surveys/:id" do
+      before { delete survey_path(survey) }
+
+      it { expect(response).to redirect_to survey_path(survey) }
+    end
+  end
 end
