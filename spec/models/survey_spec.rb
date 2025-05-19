@@ -13,4 +13,15 @@ RSpec.describe Survey, type: :model do
       expect(survey.valid?).to be false
     end
   end
+
+  describe "#editable?" do
+    let!(:responseless_survey) { create(:survey_with_questions) }
+    let!(:responseful_survey) { create(:survey_with_questions) }
+    let!(:response) { create(:response, survey: responseful_survey) }
+
+    it "returns the emptiness of survey responses" do
+      expect(responseless_survey.editable?).to be true
+      expect(responseful_survey.editable?).to be false
+    end
+  end
 end

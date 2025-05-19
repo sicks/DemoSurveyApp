@@ -18,7 +18,7 @@ class Question < ApplicationRecord
   end
 
   def strip_empty_options
-    options.map! { |o| o.to_s.strip }.select! { |o| o.present? }
+    options.map! { |o| o.to_s.strip }.select!(&:present?)
   end
 
   def uniqueness_of_options
