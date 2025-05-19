@@ -18,10 +18,6 @@
     }
   }
 
-  .number {
-    margin-bottom: 0.5rem;
-  }
-
   .body {
     font-size: 1.125rem;
   }
@@ -45,7 +41,7 @@
     }
   }
 
-  .radio-block {
+  .selection-block {
     [type=radio]:checked ~ span, [type=checkbox]:checked ~ span {
       background: var(--survey-selection);
     }

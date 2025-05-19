@@ -17,10 +17,6 @@
     width: 100%
   }
 
-  &.submit:hover {
-    background: var(--success);
-  }
-
   &.delete:hover {
     background: var(--error);
     color: white;

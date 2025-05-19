@@ -1,3 +1,9 @@
+.surveys {
+  .button.submit:hover {
+    background: var(--survey-selection);
+  }
+}
+
 .survey {
   background: var(--survey-main);
 

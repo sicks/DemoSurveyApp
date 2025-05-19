@@ -1,3 +1,9 @@
+.responses {
+  .button.submit:hover {
+    background: var(--response-selection);
+  }
+}
+
 .response {
   background: var(--response-main);
 

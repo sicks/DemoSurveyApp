@@ -20,7 +20,7 @@ form {
         content: "\00a0";
       }
 
-      &:not(:empty) ~ input, &:not(:empty) ~ .field input {
+      &:not(:empty) ~ input, &:not(:empty) ~ .field input, &:not(:empty) ~ textarea {
         border-color: var(--error);
         background: color-mix(in srgb, var(--error) 3%, white);
       }
@@ -45,9 +45,22 @@ form {
       appearance: none;
     }
   }
+
+  textarea {
+    width: 100%;
+    padding: 0.5rem 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 0.25rem;
+    transition: background 0.3s ease, border 0.3s ease;
+    resize: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
 }
 
-.radio-block {
+.selection-block {
   margin: 0;
   flex: 1 0 auto;
 
