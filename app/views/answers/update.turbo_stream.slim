@@ -1,0 +1,9 @@
+- body_errors_id = dom_id(@answer, dom_id(@answer.question, :body_errors))
+= turbo_stream.replace body_errors_id do
+  = tag.label id: body_errors_id, class: :error do
+    = @answer.errors[:body].to_sentence
+
+- pick_errors_id = dom_id(@answer, dom_id(@answer.question, :pick_errors))
+= turbo_stream.replace pick_errors_id do
+  = tag.label id: pick_errors_id, class: :error
+    = @answer.errors[:picks].to_sentence

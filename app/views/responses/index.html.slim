@@ -1,0 +1,37 @@
+.card-list.responses
+  header.flex.gap.column
+    h1 Your Responses
+    nav.flex.gap.space-between
+      = link_to "Surveys", surveys_path, class: "button"
+
+  - if @survey.present?
+    = render "surveys/survey_card", survey: @survey
+
+  - @responses.each do |response|
+    .response.card
+      - unless response.completed?
+        .corner
+          .tag incomplete
+      .show
+        - href = response.completed? ? response_path(response) : edit_response_path(response)
+        = link_to response.name, href
+      .meta.flex.gap.space-between
+        .started
+          = "Started #{time_ago_in_words(response.created_at)} ago"
+        - if response.completed?
+          .completed
+            = "Completed #{time_ago_in_words(response.completed_at)} ago"
+        - else
+          .progress
+            = "#{response.answers.count} of #{response.survey.questions.count} questions answered"
+
+  .no-responses
+    .response.card
+      - if @survey.present?
+        p You haven't responded to this survey yet.
+        = button_to "Create Response", survey_responses_path(@survey), class: %w[ button submit ]
+      - else
+        p You haven't responded to any surveys yet.
+        = link_to "View Surveys", surveys_path, class: :button
+
+  = paginate @responses

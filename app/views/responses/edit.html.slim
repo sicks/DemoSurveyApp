@@ -1,0 +1,13 @@
+.card-list.responses
+  header.flex.gap.column
+    h1 = @response.name
+    nav.flex.gap.space-between
+      = link_to "Responses", responses_path, class: "button"
+
+  - @response.answers_for_questions.each_with_index do |answer, index|
+    = render "answers/answer", answer:, index:
+
+  .request-complete.flex.gap.space-between
+    span
+    = button_to "Complete Response", complete_response_path(@response), class: "button submit",
+      form: { data: { controller: :form, turbo_confirm: "Are you sure?" } }

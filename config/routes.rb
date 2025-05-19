@@ -17,6 +17,15 @@ Rails.application.routes.draw do
     collection do
       post :generate
     end
+
     resources :questions, only: %i[ create update destroy ]
+    resources :responses, only: :create
+  end
+  resources :responses, only: %i[ index show edit ] do
+    member do
+      post :complete
+    end
+
+    resources :answers, only: %i[ create update ]
   end
 end

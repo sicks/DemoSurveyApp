@@ -16,7 +16,7 @@
       label Question Type
       .flex.gap.wrap data-radio-toggle-target="wrapper"
         - Question.question_types.each do |k, _|
-          label.radio-block
+          label.selection-block
             = f.radio_button :question_type, k, checked: f.object.send("#{k}?".to_sym), id: nil
             span = k.titleize
 
@@ -38,7 +38,7 @@
 
         .flex.option-layout data-radio-toggle-target="wrapper"
           - Question.option_layouts.each do |k, _|
-            label.radio-block
+            label.selection-block
               = f.radio_button :option_layout, k, checked: f.object.send("#{k}?".to_sym), id: nil
               span = k.titleize
 

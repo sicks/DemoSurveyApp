@@ -1,0 +1,22 @@
+.card-list.responses
+  header.flex.gap.column
+    h1 = @response.name
+    nav.flex.gap.space-between
+      = link_to "Responses", responses_path, class: "button"
+
+  - @response.answers_for_questions.each_with_index do |answer, i|
+    .answer.card
+      .corner
+        .tag = answer.question_type.humanize
+      .number
+        = "Question #{i + 1}."
+      .question-body
+        = answer.question.body
+      - if answer.short_answer?
+        .body
+          = simple_format answer.body
+      - else
+        = tag.div class: %w[ list picks flex gap wrap ].push(answer.question.option_layout) do
+          - answer.question.options.each do |option|
+            = tag.div class: [ :option, (:selected if answer.picks.include?(option)) ]
+              = option

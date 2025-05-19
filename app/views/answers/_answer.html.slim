@@ -1,0 +1,37 @@
+= tag.div id: dom_id(answer, dom_id(answer.question)), class: %w[ card answer ] do
+
+  - url = answer.new_record? ? response_answers_path(answer.response) : response_answer_path(answer.response, answer)
+  = form_with model: answer, url:, data: { controller: :form, action: "change->form#submit" } do |f|
+    = f.hidden_field :index, value: index
+    = f.hidden_field :question_id
+
+    .corner
+      .tag = answer.question_type.humanize
+
+    .number
+      = "Question #{index.to_i + 1}."
+
+    .field.question-body
+      = answer.question.body
+
+    - if answer.short_answer?
+      .field.body
+        = tag.label "Short Answer"
+        = tag.label id: dom_id(answer, dom_id(answer.question, :body_errors)), class: :error
+        = f.text_area :body, id: nil
+    - else
+      .field.picks
+        label Pick
+        = tag.label id: dom_id(answer, dom_id(answer.question, :pick_errors)), class: :error
+
+        .flex.gap
+        = tag.div class: %w[ flex gap wrap ].push(answer.option_layout)
+          - answer.question.options.each do |option|
+            - checked = answer.picks.include?(option)
+            label.selection-block
+              - if answer.pick_one?
+                = f.radio_button :picks, option, checked:, id: nil, multiple: true
+              - else
+                = f.check_box :picks, { checked:, id: nil, multiple: true }, option, ""
+              span = option.titleize
+
