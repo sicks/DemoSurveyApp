@@ -1,4 +1,38 @@
 .sessions {
   max-width: 25rem; /* 400px */
-  text-align: center;
+
+  h1, p {
+    text-align: center;
+  }
+
+  .login {
+    background: var(--response-main);
+    padding: 2rem 1rem;
+
+    .password {
+      transition: margin 0.3s ease;
+      margin:0;
+    }
+
+    .confirmation {
+      transition: opacity 0.3s ease, max-height 0.3s ease, margin 0.3s ease;
+      opacity: 0;
+      max-height: 0;
+      margin: 0;
+      overflow: hidden;
+    }
+  }
+
+  .new ~ .password {
+    margin-bottom: 1rem;
+  }
+
+  .new ~ .confirmation {
+    opacity: 1;
+    max-height: 3.5rem;
+  }
+
+  .button.submit:hover {
+    background: var(--response-selection);
+  }
 }

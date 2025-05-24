@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  allow_unauthenticated_access only: %i[ new create ]
+  allow_unauthenticated_access only: %i[ new create user ]
   rate_limit to: 10, within: 3.minutes, only: :create, with: -> { redirect_to new_session_url, alert: "Try again later." }
 
   before_action :redirect_if_signed_in, only: %i[ new create ]
@@ -8,29 +8,21 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = if user_exists?
-      User.authenticate_by(login_params)
-    else
-      User.create!(signup_params)
-    end
+    @user = user_exists? ? User.authenticate_by(login_params) : User.create(signup_params)
 
-    if user.present?
-      start_new_session_for user
+    if @user.present? && @user.errors.none?
+      start_new_session_for @user
       redirect_to after_authentication_url, notice: "Login Success"
-    else
-      redirect_to new_session_path, alert: "Login Failed: Try another email address or password."
-    end
-  rescue ActiveRecord::RecordInvalid => e
-    respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.update("flash", %(<div style="color: red">#{e.message}</div>).html_safe)
-      end
     end
   end
 
   def destroy
     terminate_session
     redirect_to new_session_path, notice: "Logout Success"
+  end
+
+  def user
+    head (user_exists? ? :ok : :not_found)
   end
 
   private

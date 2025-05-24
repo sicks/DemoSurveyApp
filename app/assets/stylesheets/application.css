@@ -32,12 +32,8 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-
-  &.authenticated {
-    height: calc(100vh - 3.3125rem);
-    overflow-y: auto;
-  }
+  height: calc(100vh - 3.3125rem);
+  overflow-y: auto;
 
   > div {
     margin: auto;

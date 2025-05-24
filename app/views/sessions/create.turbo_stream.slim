@@ -1,0 +1,9 @@
+- if @user&.errors.present?
+  = turbo_stream.replace :confirmation_error do
+    = tag.label id: :confirmation_error, class: :error do
+      = @user.errors[:password_confirmation].to_sentence
+
+- if params[:password].present? && @user.nil?
+  = turbo_stream.append :flash do
+    = tag.div class: [:alert, :message], data: { controller: :flash, type: :alert } do
+      | Login Failed: Incorrect email or password

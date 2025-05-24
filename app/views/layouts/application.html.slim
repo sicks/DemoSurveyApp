@@ -22,15 +22,19 @@ html
     = javascript_importmap_tags
 
   body
-    = tag.main class: { authenticated: authenticated? } do
+    main
       = yield
 
-    - if authenticated?
-      footer
+    footer
+      - if authenticated?
         .current-user
           = Current.user.email_address
         .logout
           = link_to "Log out", session_path, data: { turbo_method: :delete }
+      - else
+        span
+        .login
+          = link_to "Log in", new_session_path, data: { turbo_method: :delete }
 
     #flash
       = render "flash"

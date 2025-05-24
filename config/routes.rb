@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "surveys#index"
 
-  resource :session
+  resource :session, only: %i[ new create destroy ] do
+    post :user
+  end
+
   resources :surveys do
     collection do
       post :generate
@@ -21,6 +24,7 @@ Rails.application.routes.draw do
     resources :questions, only: %i[ create update destroy ]
     resources :responses, only: :create
   end
+
   resources :responses, only: %i[ index show edit ] do
     member do
       post :complete

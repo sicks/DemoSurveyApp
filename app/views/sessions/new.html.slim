@@ -1,18 +1,21 @@
 .sessions
-  h1 title="Let me begin" Sign Up/In
+  h1 Welcome
+  p Enter your email below to sign in. If you don't already have an account, one will be created.
 
-  = form_with url: session_path do |f|
-    .field
-      = f.label :email_address
-      = f.email_field :email_address, required: true, autofocus: true, autocomplete: :off,
-        placeholder: "Enter your email address", value: params[:email_address]
-    .field
-      = f.label :password
-      = f.password_field :password, required: true, autocomplete: :off,
-        placeholder: "Enter your password", maxlength: 72
-    .field
-      = f.label :password_confirmation
-      = f.password_field :password_confirmation, autocomplete: :off,
-        placeholder: "Confirm password to create an account", maxlength: 72
+  = form_with url: session_path, data: { controller: :form } do |f|
+    .card.login
+      = tag.div class: %i[ field email ], data: { controller: "user" } do
+        = f.label :email_address
+        = f.email_field :email_address, autofocus: true, autocomplete: :off, required: true,
+          placeholder: "Enter your email address", data: { action: "change->user#exists" }
+      .field.password
+        = f.label :password
+        = f.password_field :password, autocomplete: :off, required: true,
+          placeholder: "Enter your password", maxlength: 72
+      .field.confirmation
+        = f.label :password_confirmation
+        = tag.label id: :confirmation_error, class: :error
+        = f.password_field :password_confirmation, autocomplete: :off,
+          placeholder: "Confirm password to create an account", maxlength: 72
     .action
-      = f.submit "Sign in", class: "button wide submit"
+      = f.submit "Login", class: "button wide submit"
