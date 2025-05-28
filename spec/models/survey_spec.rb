@@ -14,6 +14,12 @@ RSpec.describe Survey, type: :model do
     end
   end
 
+  describe ".create_example!" do
+    it "creates a survey with 3 questions" do
+      expect { Survey.create_example! }.to change { Survey.count }.by(1).and change { Question.count }.by(3)
+    end
+  end
+
   describe "#editable?" do
     let!(:responseless_survey) { create(:survey_with_questions) }
     let!(:responseful_survey) { create(:survey_with_questions) }

@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_action :set_question, only: %i[ update destroy ]
 
   def create
-    @question = Question.create!(survey: @survey, body: "Who?")
+    @question = Question.create!(survey: @survey)
   end
 
   def update

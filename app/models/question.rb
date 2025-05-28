@@ -1,4 +1,5 @@
 class Question < ApplicationRecord
+  attribute :body, default: -> { %w[Who? What? Where? When? Why? How? Which?].sample }
   belongs_to :survey
 
   enum :question_type, %w[short_answer pick_one pick_many]
