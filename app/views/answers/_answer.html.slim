@@ -16,9 +16,9 @@
 
     - if answer.short_answer?
       .field.body
-        = tag.label "Short Answer"
+        = tag.label "Short Answer", for: dom_id(answer, dom_id(answer.question, :body))
         = tag.label id: dom_id(answer, dom_id(answer.question, :body_errors)), class: :error
-        = f.text_area :body, id: nil
+        = f.text_area :body, id: dom_id(answer, dom_id(answer.question, :body))
     - else
       .field.picks
         label Pick

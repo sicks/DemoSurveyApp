@@ -4,9 +4,6 @@
     nav.flex.gap.space-between
       = link_to "Surveys", surveys_path, class: "button"
 
-  - if @survey.present?
-    = render "surveys/survey_card", survey: @survey
-
   - @responses.each do |response|
     .response.card
       - unless response.completed?
